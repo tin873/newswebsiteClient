@@ -5,7 +5,6 @@ import { RoleViewModel } from 'src/app/pages/models/view-models/role.models';
 import { CategoryService } from 'src/app/pages/services/category.service';
 import * as fromStore from '../../pages/containers/home/store/post.reducer';
 import * as fromActions from '../../pages/containers/home/store/post.actions';
-import * as fromSelector from '../../pages/containers/home/store/post.select';
 
 @Component({
   selector: 'app-header',
