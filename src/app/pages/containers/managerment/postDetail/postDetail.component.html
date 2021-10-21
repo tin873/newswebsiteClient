@@ -1,0 +1,66 @@
+<div class="modal-content">
+  <button type="button" class="close" (click)="dismissModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="rs name-title">Thông tin bài viết</h4>
+  <div class="main-category">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Tên tiêu đề bài viết:</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="postRequest.title">
+    </div>
+    <div class="mb-3">
+      <label>Ảnh mô tả:</label>
+      <div class="col-md-10">
+          <input (change)="onselectFile($event)" type="file" id="avatarFile" name="avatarFile" class="form-control-file"/>
+      </div>
+  </div>
+  <div class="mb-3">
+    <div class="col-md-10" style="text-align:center">
+        <img class="img-responsive" style="max-width:60%;text-align:center" [src]="url" alt="Ảnh mô tả" />
+    </div>
+ </div>
+ <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Nội dung bài viết:</label>
+  <ckeditor [(ngModel)]="postRequest.content"></ckeditor>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Trạng thái hoạt động:</label>
+  <label class="form-label">
+    <input type="checkbox" [(ngModel)]="postRequest.status" class="success" style="margin: 10px;">
+    <span class="slider"></span>
+</label>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Danh mục bài viết:</label>
+  <ng-select
+      [items]="listCategory"
+      appendTo="body"
+      bindLabel="categoryName"
+      bindValue="categoryId"
+      placeholder="Chọn danh mục bài viết"
+      name="id"
+      [(ngModel)]="postRequest.categoryId"
+    >
+    </ng-select>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Người tạo</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="postRequest.createdBy">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Ngày tạo</label>
+  <input type="datetime-local" class="form-control" id="exampleFormControlInput1" [(ngModel)]="postRequest.createdDate">
+</div>
+<label for="exampleFormControlInput1" class="form-label">Người Sửa đổi</label>
+<input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="postRequest.modifiedBy">
+</div>
+<div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label">Ngày Sửa đổi</label>
+<input type="datetime-local" class="form-control" id="exampleFormControlInput1" [(ngModel)]="postRequest.modifiedDate">
+</div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary btn-modal" (click)="addOrEditPost()">{{titleButton}}</button>
+    <button type="submit" class="btn btn-danger btn-modal" (click)="dismissModal()">Hủy bỏ</button>
+  </div>
+</div>
+

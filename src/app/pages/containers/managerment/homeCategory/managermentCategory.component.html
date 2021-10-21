@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div style="padding: 0.75rem 1.25rem;">
+              <div class="row">
+                  <div class="col-md-1">
+                      <br />
+                      <a (click)="addNew()" style="font-size: 14px; font-weight: normal;" class="badge badge-primary btn-hover">Thêm danh mục</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <table id="lstPost" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th>Tên Danh mục</th>
+                          <th>Ngày tạo</th>
+                          <th>Người tạo</th>
+                          <th>Hành động</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let category of listCategory">
+                          <td>
+                              <p>{{category.categoryName}}</p>
+                          </td>
+                          <td>
+                              {{category.createdDate}}
+                          </td>
+                          <td>
+                              {{category.createdBy}}
+                          </td>
+                          <td>
+                              <a (click)="editCategory(category)" class="badge badge-primary btn-hover">Sửa</a>
+                              <a (click)="deleteCategory(category)" class="badge badge-danger btn-hover">Xóa</a>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

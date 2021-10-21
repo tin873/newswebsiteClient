@@ -1,0 +1,35 @@
+<div class="modal-content">
+  <button type="button" class="close" (click)="dismissModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="rs name-title">Thông tin danh mục</h4>
+  <div class="main-category">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Tên Danh mục</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.categoryName">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Mô tả chi tiết</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="categoryRequest.description"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Người tạo</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.createdBy">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Ngày tạo</label>
+      <input type="datetime-local" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.createdDate">
+    </div>
+    <label for="exampleFormControlInput1" class="form-label">Người Sửa đổi</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.modifiedBy">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Ngày Sửa đổi</label>
+    <input type="datetime-local" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.modifiedDate">
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary btn-modal" (click)="addOrEditCategory()">{{titleButton}}</button>
+    <button type="submit" class="btn btn-danger btn-modal" (click)="dismissModal()">Hủy bỏ</button>
+  </div>
+</div>
+

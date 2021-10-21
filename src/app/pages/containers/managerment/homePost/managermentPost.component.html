@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div style="padding: 0.75rem 1.25rem;">
+              <div class="row">
+                  <div class="col-md-1">
+                      <br />
+                      <a (click)="openPupUp()" style="font-size: 14px; font-weight: normal;" class="badge badge-primary btn-hover">Thêm bài viết</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <table id="lstPost" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th>Tiêu đề</th>
+                          <th>Ngày tạo</th>
+                          <th>Người tạo</th>
+                          <th>Trạng thái</th>
+                          <th>Hành động</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let post of listPost">
+                          <td>
+                              <a href="#">{{post.title}}</a>
+                          </td>
+                          <td>
+                              {{post.createdDate}}
+                          </td>
+                          <td>
+                              {{post.createdBy}}
+                          </td>
+                          <td>
+                            <label class="switch">
+                              <input type="checkbox" class="success" [checked]="post.status" >
+                              <span class="slider"></span>
+                          </label>
+                          </td>
+                          <td>
+                              <a (click)="openEditPupUp(post)" class="badge badge-primary btn-hover">Sửa</a>
+                              <a (click)="deletePost(post)" class="badge badge-danger btn-hover">Xóa</a>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
