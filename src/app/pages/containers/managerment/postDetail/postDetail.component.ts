@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { PostRequest } from 'src/app/pages/models/requests/post.request';
 import { CategoryViewModel } from 'src/app/pages/models/view-models/category.models';
 import { PostViewModel } from 'src/app/pages/models/view-models/post.models';
 import { CategoryService } from 'src/app/pages/services/category.service';
 import { PostService } from 'src/app/pages/services/post.service';
+import { UtilityService } from 'src/app/pages/services/utility.service';
 
 @Component({
   selector: 'app-addPost',
@@ -13,6 +15,7 @@ import { PostService } from 'src/app/pages/services/post.service';
 })
 export class PostDetailComponent implements OnInit {
   @Input() postDetail!: PostViewModel;
+  @BlockUI('blockUI') blockUI!: NgBlockUI;
   @Input() titleButton!: string;
   postRequest: PostRequest;
   url = "../../../../../assets/images/noImage.jpg";
@@ -20,7 +23,8 @@ export class PostDetailComponent implements OnInit {
   constructor(
     private categoryServices: CategoryService,
     private activeModal: NgbActiveModal,
-    private postServices: PostService
+    private postServices: PostService,
+    private utility: UtilityService
   ){
     this.postRequest = new PostRequest();
     this.listCategory = [];
@@ -69,16 +73,24 @@ export class PostDetailComponent implements OnInit {
   }
 
   addOrEditPost(){
+    this.utility.showProcessing(this.blockUI);
     if(this.titleButton == "Lưu lại"){
       this.postRequest.image = this.url;
       this.postServices.editPost(this.postRequest).subscribe(res => {
-        console.log(res);
-        location.reload();
+        this.utility.cancelProcessing(this.blockUI);
+        this.utility.showMessage("Sửa thành công.");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
       });
     }else{
       this.postRequest.image = this.url;
       this.postServices.addPost(this.postRequest).subscribe(res => {
-        location.reload();
+        this.utility.cancelProcessing(this.blockUI);
+        this.utility.showMessage("Thêm mới thành công.");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
       });
     }
     this.activeModal.dismiss();

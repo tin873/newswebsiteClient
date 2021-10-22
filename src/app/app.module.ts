@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './core/app.reducer';
 import * as fromApp from './core/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { UtilityService } from './pages/services/utility.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientService,
     ToastrService,
     ConfirmationDialogService,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

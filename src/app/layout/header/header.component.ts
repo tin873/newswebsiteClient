@@ -5,7 +5,9 @@ import { RoleViewModel } from 'src/app/pages/models/view-models/role.models';
 import { CategoryService } from 'src/app/pages/services/category.service';
 import * as fromStore from '../../pages/containers/home/store/post.reducer';
 import * as fromActions from '../../pages/containers/home/store/post.actions';
-import * as fromSelector from '../../pages/containers/home/store/post.select';
+import { UtilityService } from 'src/app/pages/services/utility.service';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -13,15 +15,20 @@ import * as fromSelector from '../../pages/containers/home/store/post.select';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @BlockUI('blockUI') blockUI!: NgBlockUI;
   role: RoleViewModel;
   listCategory: CategoryViewModel[];
   constructor(
     private categoryServices: CategoryService,
-    private store: Store<fromStore.PostState>
+    private store: Store<fromStore.PostState>,
+    private utility: UtilityService,
+    private toastrService: ToastrService
   ) {
     this.role = new RoleViewModel();
     this.listCategory = [];
+    this.utility.showProcessing(this.blockUI);
     this.store.dispatch(fromActions.requestLoadPosts());
+    this.utility.cancelProcessing(this.blockUI);
   }
   ngOnInit() {
     this.getAllCategory();
@@ -45,9 +52,13 @@ export class HeaderComponent implements OnInit {
     });
   }
   filterPost(categoryId: any){
+    this.utility.showProcessing(this.blockUI);
     this.store.dispatch(fromActions.getPostByCategory({categoryId: categoryId}));
+    this.utility.cancelProcessing(this.blockUI);
   }
   fullPost(){
+    this.utility.showProcessing(this.blockUI);
     this.store.dispatch(fromActions.requestLoadPosts());
+    this.utility.cancelProcessing(this.blockUI);
   }
 }

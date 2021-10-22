@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Observable } from 'rxjs';
 import { PostViewModel } from '../../models/view-models/post.models';
 import * as fromStore from './store/post.reducer';
@@ -13,17 +14,16 @@ import * as fromSelector from './store/post.select';
 })
 export class HomeComponent implements OnInit {
   router: any;
+  @BlockUI('blockUI') blockUI!: NgBlockUI;
   isloadding$!: Observable<boolean>;
   eror$!: Observable<string | null>;
   posts$!: Observable<PostViewModel[]>;
 
   constructor(
-    private store: Store<fromStore.PostState>
+    private store: Store<fromStore.PostState>,
   ) {
     this.posts$ = this.store.select(fromSelector.posts);
     this.isloadding$ = this.store.select(fromSelector.isLoading);
-    console.log("thửu pôssd");
-    console.log(this.isloadding$);
     this.store.select(state => state).subscribe(data => {
       console.log('data', data);
     });

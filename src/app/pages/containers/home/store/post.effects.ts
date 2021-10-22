@@ -7,8 +7,8 @@ import { getPostByCategory, loadPosts, requestLoadPosts } from './post.actions';
 
 @Injectable()
 export class PostEffects {
-
-  constructor(private actions$: Actions, private service: PostService) {}
+  constructor(private actions$: Actions, private service: PostService) {
+  }
 
   loadPost$ = createEffect(() =>
     this.actions$.pipe(

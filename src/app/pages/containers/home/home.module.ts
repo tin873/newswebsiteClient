@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { BlockUIModule } from 'ng-block-ui';
 import { TruncatePipe } from 'src/app/share/pipe/truncaced.pipe';
 import { PostService } from '../../services/post.service';
 import { HomeComponent } from './home.component';
@@ -35,6 +36,10 @@ const routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature(fromPost.PostsFeatureKey, fromPost.reducer),
     EffectsModule.forFeature([PostEffects]),
+    BlockUIModule.forRoot({
+      delayStart: 100,
+      delayStop: 500
+    })
   ],
   providers: [
     PostService,
