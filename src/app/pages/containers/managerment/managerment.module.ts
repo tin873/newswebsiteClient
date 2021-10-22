@@ -15,12 +15,7 @@ import { ManagermentCategoryComponent } from './homeCategory/managermentCategory
 import { ManagermentPostComponent } from './homePost/managermentPost.component';
 import { PostDetailComponent } from './postDetail/postDetail.component';
 
-const routes = [
-  {
-    path: '',
-    component: ManagermentCategoryComponent
-  }
-];
+
 @NgModule({
   declarations: [
     ManagermentCategoryComponent,
@@ -31,7 +26,6 @@ const routes = [
   imports: [
     CommonModule,
     NgbModule,
-    RouterModule.forChild(routes),
     FormsModule,
     CKEditorModule,
     NgSelectModule,

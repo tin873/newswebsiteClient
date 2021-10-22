@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { CategoryRequest } from 'src/app/pages/models/requests/category.request';
@@ -7,7 +6,7 @@ import { CategoryViewModel } from 'src/app/pages/models/view-models/category.mod
 import { CategoryService } from 'src/app/pages/services/category.service';
 import { UtilityService } from 'src/app/pages/services/utility.service';
 @Component({
-  selector: 'app-addPost',
+  selector: 'app-addCategory',
   templateUrl: './addCategory.component.html',
   styleUrls: ['./addCategory.component.css']
 })
@@ -20,7 +19,6 @@ export class AddCategoryComponent implements OnInit {
     private activeModal: NgbActiveModal,
     private categoryServices: CategoryService,
     private utility: UtilityService,
-    private router: Router
   ){
     this.categoryRequest = new CategoryRequest();
   }

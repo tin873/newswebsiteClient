@@ -6,7 +6,7 @@ import { PostService } from 'src/app/pages/services/post.service';
 import { PupUpDetailPostService } from 'src/app/pages/services/pupupDetailPost.service';
 import { UtilityService } from 'src/app/pages/services/utility.service';
 @Component({
-  selector: 'app-addPost',
+  selector: 'app-ManagermentPost',
   templateUrl: './managermentPost.component.html',
   styleUrls: ['./managermentPost.component.css']
 })

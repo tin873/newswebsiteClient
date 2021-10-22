@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AddCategoryComponent } from '../containers/managerment/addCategory/addCategory.component';
 import { PostDetailComponent } from '../containers/managerment/postDetail/postDetail.component';
 import { PostViewModel } from '../models/view-models/post.models';
 

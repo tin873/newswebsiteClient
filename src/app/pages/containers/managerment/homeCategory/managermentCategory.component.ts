@@ -6,7 +6,7 @@ import { ConfirmationDialogService } from 'src/app/pages/services/confirmation-d
 import { PupUpDetailCategoryService } from 'src/app/pages/services/pupupDetailCategory.service';
 import { UtilityService } from 'src/app/pages/services/utility.service';
 @Component({
-  selector: 'app-addPost',
+  selector: 'app-managermentCategory',
   templateUrl: './managermentCategory.component.html',
   styleUrls: ['./managermentCategory.component.css']
 })
