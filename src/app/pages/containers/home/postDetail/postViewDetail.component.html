@@ -8,5 +8,9 @@
     </div>
     <div class="col-lg-12" [innerHTML]="postViewModal.content">
     </div>
+    <div class="col-lg-12">
+      <h6>Tác giả: {{postViewModal.createdBy}}</h6>
+      <h6>Ngày viết: {{postViewModal.createdDate | date:'short'}}</h6>
+    </div>
   </div>
 </div>
