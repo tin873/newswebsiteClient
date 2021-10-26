@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BlockUIModule } from 'ng-block-ui';
@@ -27,6 +26,7 @@ import { PostDetailComponent } from './postDetail/postDetail.component';
     CommonModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     CKEditorModule,
     NgSelectModule,
     BlockUIModule.forRoot({

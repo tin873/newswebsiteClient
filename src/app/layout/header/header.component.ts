@@ -7,7 +7,7 @@ import * as fromStore from '../../pages/containers/home/store/post.reducer';
 import * as fromActions from '../../pages/containers/home/store/post.actions';
 import { UtilityService } from 'src/app/pages/services/utility.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -27,6 +27,9 @@ export class HeaderComponent implements OnInit {
     this.listCategory = [];
     this.loadContent();
   }
+  serchForm = new FormGroup({
+    search: new FormControl(''),
+  });
   ngOnInit() {
     this.getAllCategory();
     this.getRole();
@@ -63,4 +66,13 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(fromActions.requestLoadPosts());
     this.utility.cancelProcessing(this.blockUI);
   }
+  postSearch(){
+    this.utility.showProcessing(this.blockUI);
+    this.store.dispatch(fromActions.getSearchPostFromGetAll({search: this.serchForm.value.search}));
+    this.utility.cancelProcessing(this.blockUI);
+  }
+  test(){
+  }
 }
+
+

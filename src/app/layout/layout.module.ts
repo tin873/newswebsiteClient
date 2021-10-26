@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlockUIModule } from 'ng-block-ui';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryService } from '../pages/services/category.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -27,10 +27,11 @@ import * as fromPost from '../pages/containers/home/store/post.reducer'
   imports: [
     CommonModule,
     RouterModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forFeature(fromPost.PostsFeatureKey, fromPost.reducer),
     EffectsModule.forFeature([PostEffects]),
-    FormsModule,
-    NgbModule,
     BlockUIModule.forRoot({
       delayStart: 100,
       delayStop: 500

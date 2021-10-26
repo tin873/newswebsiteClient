@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav" *ngIf="role.role == 'user'">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="role.role == 'user'">
           <li class="nav-item">
             <a class="nav-link active btn-hover" aria-current="page" (click)="fullPost()">Trang chủ</a>
           </li>
@@ -24,12 +24,12 @@
           </li>
         </ul>
 
-        <ul class="navbar-nav" *ngIf="role.role == 'managerment'">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="role.role == 'managerment'">
           <li class="nav-item">
-            <a class="nav-link" routerLink="managermentCategory">Quản lý danh mục</a>
+            <a class="nav-link btn-hover" routerLink="managermentCategory">Quản lý danh mục</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="managermentPost">Quản lý bài viết</a>
+            <a class="nav-link btn-hover" routerLink="managermentPost">Quản lý bài viết</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,7 +41,12 @@
             </ul>
           </li>
         </ul>
+        <form class="d-flex" [formGroup]="serchForm" (ngSubmit)="test()">
+          <input formControlName="search" (input)="postSearch()" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>
 </div>
+

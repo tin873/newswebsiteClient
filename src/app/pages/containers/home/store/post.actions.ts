@@ -17,3 +17,12 @@ export const getPostByCategory = createAction(
   props<{ categoryId: number }>()
 );
 
+export const getSearchPostFromGetAll = createAction(
+  '[Post] Search Posts',
+  props<{ search: string }>()
+);
+
+export const getSearchPostToGetApi = createAction(
+  '[Post/API] Search Posts',
+  props<{ search: string }>()
+);

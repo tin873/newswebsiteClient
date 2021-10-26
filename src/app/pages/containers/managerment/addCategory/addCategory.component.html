@@ -1,4 +1,4 @@
-<div class="modal-content" *blockUI="'blockUI'">
+<form class="modal-content" [formGroup]="addCategoryForm" *blockUI="'blockUI'">
   <button type="button" class="close" (click)="dismissModal()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -6,30 +6,39 @@
   <div class="main-category">
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Tên Danh mục</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.categoryName">
+      <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="categoryName">
+      <br *ngIf="addCategoryForm.get('categoryName') && addCategoryForm.get('categoryName')?.invalid && addCategoryForm.get('categoryName')?.touched">
+      <span *ngIf="addCategoryForm.get('categoryName') && addCategoryForm.get('categoryName')?.invalid && addCategoryForm.get('categoryName')?.touched"
+      style="color: red;">Tên danh mục không được để trống!</span>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Mô tả chi tiết</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="categoryRequest.description"></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Người tạo</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.createdBy">
+      <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="createdBy">
+      <br *ngIf="addCategoryForm.get('createdBy') && addCategoryForm.get('createdBy')?.invalid && addCategoryForm.get('createdBy')?.touched">
+      <span *ngIf="addCategoryForm.get('createdBy') && addCategoryForm.get('createdBy')?.invalid && addCategoryForm.get('createdBy')?.touched"
+      style="color: red;">Người tạo không được để trống!</span>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Ngày tạo</label>
-      <input type="datetime-local" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.createdDate">
+      <input type="datetime-local" class="form-control" id="exampleFormControlInput1" formControlName="createdDate">
+      <br *ngIf="addCategoryForm.get('createdDate') && addCategoryForm.get('createdDate')?.invalid && addCategoryForm.get('createdDate')?.touched">
+      <span *ngIf="addCategoryForm.get('createdDate') && addCategoryForm.get('createdDate')?.invalid && addCategoryForm.get('createdDate')?.touched"
+      style="color: red;">Ngày tạo không được để trống!</span>
     </div>
     <label for="exampleFormControlInput1" class="form-label">Người Sửa đổi</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.modifiedBy">
+    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="modifiedBy">
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Ngày Sửa đổi</label>
-    <input type="datetime-local" class="form-control" id="exampleFormControlInput1" [(ngModel)]="categoryRequest.modifiedDate">
+    <input type="datetime-local" class="form-control" id="exampleFormControlInput1" formControlName="modifiedDate">
   </div>
   <div class="mb-3">
     <button type="submit" class="btn btn-primary btn-modal" (click)="addOrEditCategory()">{{titleButton}}</button>
     <button type="submit" class="btn btn-danger btn-modal" (click)="dismissModal()">Hủy bỏ</button>
   </div>
-</div>
+</form>
 

@@ -6,4 +6,5 @@ export class ConfigSetting {
   //Post
   public static post = "/api/Post";
   public static getPostByCategory = "/api/Post/GetPostByCategory";
+  public static getPostSearch = "/api/Post/GetSearchPost";
 }
